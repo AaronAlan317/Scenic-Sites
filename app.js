@@ -13,7 +13,7 @@ const LocalStrategy = require('passport-local')
 const ejsMate = require('ejs-mate')
 const User = require('./models/user')
 const MongoStore = require('connect-mongo');
-const dbUrl = process.env.DB_URL ||'mongodb://localhost:27017/Scenic_Sites_DB'
+const dbUrl = process.env.DB_URL 
 const { siteSchema, reviewSchema } = require('./schemas.js')
 const ExpressError = require('./utils/ExpressError')
 
