@@ -13,7 +13,7 @@ const LocalStrategy = require('passport-local')
 const ejsMate = require('ejs-mate')
 const User = require('./models/user')
 const MongoStore = require('connect-mongo');
-const dbUrl = process.env.DB_URL 
+
 const { siteSchema, reviewSchema } = require('./schemas.js')
 const ExpressError = require('./utils/ExpressError')
 
@@ -28,8 +28,8 @@ const sitesRoutes = require('./routes/sites')
 const reviewsRoutes = require('./routes/reviews')
 
 
-
-mongoose.connect(dbURL, {
+const dbUrl = process.env.DB_URL 
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -55,7 +55,7 @@ app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
 
 const store = MongoStore.create({
-    mongoUrl: dbURL,
+    mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
         secret: 'ThisIsAProcess'
